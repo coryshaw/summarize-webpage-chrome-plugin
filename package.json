@@ -1,0 +1,24 @@
+{
+  "name": "summarize-webpage-chrome-plugin",
+  "version": "1.0.0",
+  "description": "Chrome plugin that summarizes the content of a webpage using the OpenAI Chat GPT api.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coryshaw/summarize-webpage-chrome-plugin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coryshaw/summarize-webpage-chrome-plugin/issues"
+  },
+  "homepage": "https://github.com/coryshaw/summarize-webpage-chrome-plugin#readme",
+  "dependencies": {
+    "@mozilla/readability": "^0.5.0",
+    "axios": "^1.6.8"
+  }
+}
