@@ -18,44 +18,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  document.getElementById("summarize").addEventListener("click", function () {
-    document.getElementById("summary").textContent = "Loading...";
-
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      chrome.scripting.executeScript(
-        {
-          target: { tabId: tabs[0].id },
-          files: ["lib/Readability.js"],
-        },
-        () => {
-          chrome.scripting.executeScript(
-            {
-              target: { tabId: tabs[0].id },
-              func: extractContent,
-            },
-            (results) => {
-              if (
-                chrome.runtime.lastError ||
-                !results ||
-                results.length === 0
-              ) {
-                document.getElementById("summary").textContent =
-                  "Error extracting text.";
-                return;
-              }
-              const extractedText = results[0].result;
-              if (extractedText) {
-                fetchSummary(extractedText);
-              } else {
-                document.getElementById("summary").textContent =
-                  "No content was found.";
-                return;
-              }
+  // Extract content from the current tab and fetch a summary on content loaded
+  document.getElementById("summary").textContent = "Summarizing this page...";
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.scripting.executeScript(
+      {
+        target: { tabId: tabs[0].id },
+        files: ["lib/Readability.js"],
+      },
+      () => {
+        chrome.scripting.executeScript(
+          {
+            target: { tabId: tabs[0].id },
+            func: extractContent,
+          },
+          (results) => {
+            if (chrome.runtime.lastError || !results || results.length === 0) {
+              document.getElementById("summary").textContent =
+                "Error extracting text.";
+              return;
             }
-          );
-        }
-      );
-    });
+            const extractedText = results[0].result;
+            if (extractedText) {
+              fetchSummary(extractedText);
+            } else {
+              document.getElementById("summary").textContent =
+                "No content was found.";
+              return;
+            }
+          }
+        );
+      }
+    );
   });
 
   document.getElementById("save-btn").addEventListener("click", function () {
@@ -103,7 +97,7 @@ function fetchSummary(text) {
           {
             role: "system",
             content:
-              "Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic html formatting such as headings, bold, italics, and bullets. If (and only if) there is factually incorrect information found, add 'Special Note:' then describe the concern FIRST above the summary and wrap it in a div with the class 'special-note'. Additionally, if the information is one sided or leaning on one side of a topic, use the special-note area to call out other viewpoints.  If no factually incorrect issues or imbalances are found, don't say anything about it. Format the response as a string with html tags.",
+              "Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic html formatting such as headings, bold, italics, and bullets. If (and only if) there is factually incorrect information found, or if the information is one sided, add 'Special Note:' then describe the concern FIRST above the summary and wrap it in a div with the class 'special-note'. If no factually incorrect issues or imbalances are found, don't say anything about it. Format the response as a string with html tags (without wrapping in a `html` indicator)",
           },
           {
             role: "user",
