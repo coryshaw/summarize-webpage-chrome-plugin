@@ -1,13 +1,20 @@
 # GPT Summarizer Chrome Extension
 
-The GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT models to summarize text content from any webpage. This tool is designed to enhance productivity by providing quick insights into web articles, news, and other extensive written materials through a simple, user-friendly interface.
+The GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT models to summarize text content from any webpage and where necessary calls out inaccurate information and one-sided perspectives.
+
+_The goal of this tool is to:_
+
+- Enhance productivity providing quick insights into web articles, news, and other extensive written materials with the click of a button.
+- Call out factually incorrect information and one-sided viewpoints in the summary.
+- Bridge the gap between scanning headlines and reading a full article start to finish.
+- Decrease dividing biases caused by social echo chambers.
 
 ## Features
 
 - **Quick Summarization**: Summarizes text directly from web pages using OpenAI's GPT model.
 - **Secure API Key Storage**: Uses Chrome's storage API to securely store and retrieve your OpenAI API key.
-- **Calls out Factually Incorrect Information**: If the model detects any factually incorrect information, it will be highlighted in the summary.
-- **Easy to Use**: Simple interface with the ability to change the API key easily.
+- **Calls out Factually Incorrect Information and One-Sided Viewpoints**: If the model detects any factually incorrect information, it will be highlighted in the summary.
+- **Easy to Use**: Click button, get summary. It's that simple!
 
 ## Installation
 
@@ -20,6 +27,12 @@ The GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT mod
 
 1. **Download the Extension**:
    Clone this repository or download the ZIP to your local machine.
+
    ```bash
    git clone https://github.com/yourusername/gpt-summarizer-extension.git
    ```
+
+2. **Install the Extension**:
+   - Open Google Chrome and navigate to `chrome://extensions/`.
+   - Enable Developer Mode by toggling the switch in the top right corner.
+   - Click on the `Load unpacked` button and select the `gpt-summarizer-extension` directory.
