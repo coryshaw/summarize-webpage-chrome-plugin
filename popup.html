@@ -8,12 +8,13 @@
 </head>
 
 <body>
-    <div id="apiKeyForm">
-        <input type="text" id="apiKey" placeholder="Enter OpenAI API Key" />
+    <div id="apiKeyForm" style="display:none;">
+        <input type="password" id="apiKey" placeholder="Enter OpenAI API Key">
         <button id="saveKey">Save API Key</button>
     </div>
     <button id="summarize">Summarize This Page</button>
     <div id="summary"></div>
+    <a href="#" id="changeKeyLink" style="display:none;">Change API Key</a>
     <script src="popup.js"></script>
 </body>
 
