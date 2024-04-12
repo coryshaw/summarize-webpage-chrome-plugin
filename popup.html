@@ -5,16 +5,84 @@
     <meta charset="UTF-8">
     <title>Summarize Text</title>
     <script src="lib/Readability.js"></script>
+    <style>
+        .container {
+            margin: 20px;
+            min-width: 600px;
+            font-size: medium;
+            font-family: Arial, sans-serif;
+            line-height: 1.5em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #apiKeyForm {
+            margin-bottom: 20px;
+        }
+
+        input[type="password"] {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        #summary {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            line-height: 1.5;
+            padding-bottom: 20px;
+        }
+
+        .special-note {
+            background: yellow;
+            margin-top: 15px;
+            font-weight: bold;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="apiKeyForm" style="display:none;">
-        <input type="password" id="apiKey" placeholder="Enter OpenAI API Key">
-        <button id="saveKey">Save API Key</button>
+    <div class="container">
+        <div id="apiKeyForm" style="display:none;">
+            <label for="apiKey">OpenAI API Key:</label>
+            <input type="password" id="apiKey" placeholder="Enter OpenAI API Key">
+            <button id="save-btn">Save API Key</button>
+            <button id="cancel-btn">Cancel</button>
+        </div>
+        <div id="app">
+            <button id="summarize">Summarize This Page</button>
+            <div id="summary"></div>
+            <div id="loading">Loading...</div>
+            <a href="#" id="changeKeyLink" style="display:none;">Change API Key</a>
+        </div>
     </div>
-    <button id="summarize">Summarize This Page</button>
-    <div id="summary"></div>
-    <a href="#" id="changeKeyLink" style="display:none;">Change API Key</a>
     <script src="popup.js"></script>
 </body>
 

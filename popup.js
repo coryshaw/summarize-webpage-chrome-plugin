@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const apiKeyInput = document.getElementById("apiKey");
   const apiKeyForm = document.getElementById("apiKeyForm");
+  const app = document.getElementById("app");
   const changeKeyLink = document.getElementById("changeKeyLink");
 
   // Initially load and set the API key if available
@@ -8,9 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (data.apiKey) {
       apiKeyInput.value = data.apiKey; // Pre-populate the field
       apiKeyForm.style.display = "none";
+      app.style.display = "block";
       changeKeyLink.style.display = "block";
     } else {
       apiKeyForm.style.display = "block";
+      app.style.display = "none";
       changeKeyLink.style.display = "none";
     }
   });
@@ -55,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  document.getElementById("saveKey").addEventListener("click", function () {
+  document.getElementById("save-btn").addEventListener("click", function () {
     var newApiKey = apiKeyInput.value;
     if (newApiKey.trim() !== "") {
       chrome.storage.local.set({ apiKey: newApiKey.trim() }, function () {
@@ -70,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   changeKeyLink.addEventListener("click", function () {
     apiKeyForm.style.display = "block";
+    app.style.display = "none";
     changeKeyLink.style.display = "none";
   });
 });
@@ -99,7 +103,7 @@ function fetchSummary(text) {
           {
             role: "system",
             content:
-              "You're job is to summarize content provided clearly and concisely using bullets. Your responses should also point out any factually incorrect information in a subnote after the bullets with the header 'Special Note:'.",
+              "Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic html formatting such as headings, bold, italics, and bullets. If (and only if) there is factually incorrect information found, add 'Special Note:' then describe the concern FIRST above the summary and wrap it in a div with the class 'special-note'. Additionally, if the information is one sided or leaning on one side of a topic, use the special-note area to call out other viewpoints.  If no factually incorrect issues or imbalances are found, don't say anything about it. Format the response as a string with html tags.",
           },
           {
             role: "user",
@@ -117,7 +121,7 @@ function fetchSummary(text) {
       .then((data) => {
         const response = data.choices[0].message.content;
         if (data.choices && data.choices[0]) {
-          document.getElementById("summary").textContent = response;
+          document.getElementById("summary").innerHTML = response;
         } else {
           throw new Error("Unexpected response");
         }
