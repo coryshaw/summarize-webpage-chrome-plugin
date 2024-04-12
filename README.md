@@ -2,7 +2,7 @@
 
 The GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT models to summarize text content from any webpage and where necessary calls out inaccurate information and one-sided perspectives.
 
-_The goal of this tool is to:_
+**The goal of this tool is to:**
 
 - Enhance productivity providing quick insights into web articles, news, and other extensive written materials with the click of a button.
 - Call out factually incorrect information and one-sided viewpoints in the summary.
@@ -29,7 +29,7 @@ _The goal of this tool is to:_
    Clone this repository or download the ZIP to your local machine.
 
    ```bash
-   git clone https://github.com/yourusername/gpt-summarizer-extension.git
+   git clone https://github.com/coryshaw/gpt-summarizer-extension.git
    ```
 
 2. **Install the Extension**:
