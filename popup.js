@@ -18,6 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // cancel button
+  document.getElementById("cancel-btn").addEventListener("click", function () {
+    window.close();
+  });
+
+  // close button
+  document.getElementById("close-btn").addEventListener("click", function () {
+    window.close();
+  });
+
   // Extract content from the current tab and fetch a summary on content loaded
   document.getElementById("summary").textContent = "Summarizing this page...";
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -57,8 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (newApiKey.trim() !== "") {
       chrome.storage.local.set({ apiKey: newApiKey.trim() }, function () {
         apiKeyForm.style.display = "none";
-        changeKeyLink.style.display = "block";
-        alert("API Key saved successfully!");
+        apiKeySuccess.style.display = "block";
       });
     } else {
       alert("Please enter a valid API Key.");
