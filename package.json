@@ -4,7 +4,7 @@
   "description": "Chrome plugin that summarizes the content of a webpage using the OpenAI Chat GPT api.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,27 @@
   },
   "homepage": "https://github.com/coryshaw/summarize-webpage-chrome-plugin#readme",
   "dependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
+    "@mantine/core": "^7.10.0",
+    "@mantine/hooks": "^7.10.0",
     "@mozilla/readability": "^0.5.0",
-    "axios": "^1.6.8"
+    "babel-loader": "^9.1.3",
+    "fs-extra": "^11.2.0",
+    "markd": "^1.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "style-loader": "^4.0.0"
   }
 }

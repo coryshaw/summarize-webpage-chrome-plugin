@@ -1,0 +1,50 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "webextensions": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "react-hooks"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off", // Not needed with React 17+
+    "react/prop-types": "off", // Disable prop-types as we use TypeScript
+    "no-undef": "off", // Turn off no-undef rule as we handle globals separately
+    "no-console": "warn", // Warn on console usage
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+  },
+  "globals": {
+    "chrome": "readonly"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".json"]
+      }
+    }
+  }
+}
