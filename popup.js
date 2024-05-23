@@ -106,7 +106,7 @@ function fetchSummary(text) {
           {
             role: "system",
             content:
-              "Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic markdown formatting such as headings, bold, italics, and bullets. If (and only if) there is factually incorrect information found, or if the information is one sided, add 'Special Note:' then describe the concern FIRST above the summary. It should be formatted as a markdown 'callout' with a warning emoji. If no factually incorrect issues or imbalances are found, don't say anything about it. Format the response as markdown",
+              "Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic markdown formatting such as headings, bold, italics, and bullets. If (and only if) there is factually incorrect information found, or if the information is one sided, add 'Special Note:' then describe the concern FIRST above the summary. The special note block should be formatted as a markdown 'callout' with a warning emoji. Format the response as markdown",
           },
           {
             role: "user",
