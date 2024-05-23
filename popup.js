@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     chrome.scripting.executeScript(
       {
         target: { tabId: tabs[0].id },
-        files: ["lib/Readability.js"],
+        files: ["lib/Readability.min.js"],
       },
       () => {
         chrome.scripting.executeScript(
@@ -101,12 +101,12 @@ function fetchSummary(text) {
         Authorization: `Bearer ${data.apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4-turbo",
+        model: "gpt-3.5-turbo-0125",
         messages: [
           {
             role: "system",
             content:
-              "Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic html formatting such as headings, bold, italics, and bullets. If (and only if) there is factually incorrect information found, or if the information is one sided, add 'Special Note:' then describe the concern FIRST above the summary and wrap it in a div with the class 'special-note'. If no factually incorrect issues or imbalances are found, don't say anything about it. Format the response as a string with html tags (without wrapping in a `html` indicator)",
+              "Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic markdown formatting such as headings, bold, italics, and bullets. If (and only if) there is factually incorrect information found, or if the information is one sided, add 'Special Note:' then describe the concern FIRST above the summary. It should be formatted as a markdown 'callout' with a warning emoji. If no factually incorrect issues or imbalances are found, don't say anything about it. Format the response as markdown",
           },
           {
             role: "user",
@@ -124,7 +124,7 @@ function fetchSummary(text) {
       .then((data) => {
         const response = data.choices[0].message.content;
         if (data.choices && data.choices[0]) {
-          document.getElementById("summary").innerHTML = response;
+          document.getElementById("summary").innerHTML = marked.parse(response);
         } else {
           throw new Error("Unexpected response");
         }
