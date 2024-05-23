@@ -1,6 +1,6 @@
 # GPT Summarizer Chrome Extension
 
-GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT models to summarize text content from any webpage. Additionally, it highlights inaccurate information and one-sided perspectives.
+GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT models to summarize text content from any webpage. Additionally, it highlights inaccurate information and one-sided perspectives. This project is built using React and bundled with Webpack. ESLint is used to maintain code quality.
 
 **The goal of this tool is to:**
 
@@ -22,6 +22,7 @@ GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT models 
 
 - Google Chrome Browser
 - OpenAI API Key (You can obtain one by creating an account on [OpenAI](https://openai.com/api/))
+- Node.js and npm installed on your local machine
 
 ### Loading the Extension
 
@@ -32,7 +33,16 @@ GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT models 
    git clone https://github.com/coryshaw/gpt-summarizer-extension.git
    ```
 
-2. **Install the Extension**:
+2. **Install Dependencies and Build the Project**:
+   Navigate to the project directory and install the dependencies. Then, build the project which will generate the necessary files in the `dist` directory.
+
+   ```bash
+   cd gpt-summarizer-extension
+   npm install
+   npm run build
+   ```
+
+3. **Install the Extension**:
    - Open Google Chrome and navigate to `chrome://extensions/`.
    - Enable Developer Mode by toggling the switch in the top right corner.
-   - Click on the `Load unpacked` button and select the `gpt-summarizer-extension` directory.
+   - Click on the `Load unpacked` button and select the `dist` directory inside the `gpt-summarizer-extension` directory.
