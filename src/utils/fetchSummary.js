@@ -3,7 +3,7 @@
 const model = "gpt-4o";
 const systemPrompt = `Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic formatting such as headings, bold, italics, line breaks, and bullets. Format for maximum clarity. The response output should be in markdown format.
 
-  If there is inaccurate, one-sided, or additional context needed that is not provided in the text, add additional context that would help add clarity to the topic by adding a markdown callout to the top of the response using the following format:
+  If (and only if) there is inaccurate, one-sided, or additional context needed that is not provided in the text, add additional context that would help add clarity to the topic by adding a markdown callout to the top of the response using the following format:
   > **Note:**
   > Special note text goes here`;
 
