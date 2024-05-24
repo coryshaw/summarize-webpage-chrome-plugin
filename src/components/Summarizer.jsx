@@ -11,24 +11,25 @@ function Summarizer() {
 
   // on load, extract page text and fetch summary
   useEffect(() => {
-    // const summarizeContent = async () => {
-    //   try {
-    //     const extractedText = extractPageText();
-    //     console.log("extractedText", extractedText);
-    //     if (!extractedText) {
-    //       setError("No content available.");
-    //     }
-    //     const fetchedSummary = await fetchSummary(extractedText);
-    //     // const formattedSummary = marked.parse(fetchedSummary);
-    //     setSummary(formattedSummary);
-    //   } catch (err) {
-    //     console.log("CATCH", err.message);
-    //     setError(err.message);
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
-    // summarizeContent();
+    const summarizeContent = async () => {
+      try {
+        const extractedText = await extractPageText();
+        if (!extractedText) {
+          setError("No content available.");
+          setLoading(false);
+          return;
+        }
+        const fetchedSummary = await fetchSummary(extractedText);
+        const formattedSummary = marked.parse(fetchedSummary);
+        setSummary(formattedSummary);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    summarizeContent();
   }, []);
 
   return (
@@ -39,12 +40,7 @@ function Summarizer() {
           {error}
         </Alert>
       )}
-      {summary && (
-        <div
-          dangerouslySetInnerHTML={{ __html: summary }}
-          style={{ textAlign: "left" }}
-        />
-      )}
+      {summary && <div dangerouslySetInnerHTML={{ __html: summary }} />}
     </Container>
   );
 }
