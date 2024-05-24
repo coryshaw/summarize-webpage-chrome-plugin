@@ -20,6 +20,10 @@ GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT models 
 
 ## Installation
 
+[Download the extension from the Chrome Web Store](https://chromewebstore.google.com/detail/gpt-summarizer/ofcjacnckhgbmeompdemfppfmfogahgf)
+
+## Development
+
 ### Prerequisites
 
 - Google Chrome Browser
