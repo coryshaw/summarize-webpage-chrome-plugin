@@ -6,7 +6,7 @@ const config = require("./webpack.config.js");
 // Paths
 const distDir = path.resolve(__dirname, "dist");
 const libDir = path.resolve(__dirname, "lib");
-const publicFiles = ["index.html", "manifest.json"];
+const publicFiles = ["index.html", "manifest.json", "global.css"];
 const imagesDir = path.resolve(__dirname, "images");
 
 // Ensure dist directory exists

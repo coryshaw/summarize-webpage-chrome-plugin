@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { extractPageText } from "../utils/extractContent";
 import { fetchSummary } from "../utils/fetchSummary";
 import { IconRefresh } from "@tabler/icons-react";
+import markedAlert from "marked-alert";
 
 function Summarizer() {
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ function Summarizer() {
         return;
       }
       const fetchedSummary = await fetchSummary(extractedText);
-      const formattedSummary = marked.parse(fetchedSummary);
+      const formattedSummary = marked.use(markedAlert()).parse(fetchedSummary);
       setSummary(formattedSummary);
     } catch (err) {
       setError(err.message);

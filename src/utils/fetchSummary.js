@@ -1,6 +1,11 @@
-const model = "gpt-3.5-turbo-0125";
-const systemPrompt =
-  "Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic markdown formatting such as headings, bold, italics, and bullets. If (and only if) there is factually incorrect information found, or if the information is one sided, add 'Special Note:' then describe the concern FIRST above the summary. The special note block should be formatted as a markdown 'callout' with a warning emoji. Format the response as markdown";
+// const model = "gpt-3.5-turbo-0125";
+// const model = "gpt-4";
+const model = "gpt-4o";
+const systemPrompt = `Summarize the content provided clearly and concisely in as few words as possible (but enough to highlight the important points). Use basic formatting such as headings, bold, italics, line breaks, and bullets. Format for maximum clarity. The response output should be in markdown format.
+
+  If there is inaccurate, one-sided, or additional context needed that is not provided in the text, add additional context that would help add clarity to the topic by adding a markdown callout to the top of the response using the following format:
+  > **Note:**
+  > Special note text goes here`;
 
 export const fetchSummary = async (text) => {
   try {
