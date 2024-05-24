@@ -27,10 +27,10 @@
     "react-hooks"
   ],
   "rules": {
-    "react/react-in-jsx-scope": "off", // Not needed with React 17+
-    "react/prop-types": "off", // Disable prop-types as we use TypeScript
-    "no-undef": "off", // Turn off no-undef rule as we handle globals separately
-    "no-console": "warn", // Warn on console usage
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "no-undef": "off",
+    "no-console": "warn",
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   },
   "globals": {
@@ -46,5 +46,6 @@
         "extensions": [".js", ".jsx", ".json"]
       }
     }
-  }
+  },
+  "ignorePatterns": ["lib/**/*"]
 }
