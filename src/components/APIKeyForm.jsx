@@ -23,9 +23,9 @@ const APIKeyForm = ({ currentKey, onDone }) => {
       <Box id="apiKeyForm">
         <Text pb={12}>
           To get started with GPT Summarizer, you must enter your OpenAI API
-          key. You can obtain one by creating an account at{" "}
-          <Anchor href="https://openai.com/api" target="_blank">
-            openai.com
+          key. You can obtain one here:{" "}
+          <Anchor href="https://platform.openai.com/api-keys" target="_blank">
+            openai.com API keys
           </Anchor>
           .
         </Text>
@@ -34,6 +34,7 @@ const APIKeyForm = ({ currentKey, onDone }) => {
           type="password"
           placeholder="Enter OpenAI API Key"
           label="OpenAI API Key"
+          description="Your API key is stored securely in Chrome storage."
           value={form.values.apiKey || ""}
           required
           key={form.key("apiKey")}
