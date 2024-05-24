@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { MantineProvider, Container, Divider, Button } from "@mantine/core";
+import {
+  MantineProvider,
+  Container,
+  Divider,
+  Button,
+  Group,
+} from "@mantine/core";
 import APIKeyForm from "./components/APIKeyForm";
 import "@mantine/core/styles.css";
 import Summarizer from "./components/Summarizer";
-import { IconSettings } from "@tabler/icons-react";
+import { IconBubble, IconSettings, IconStarFilled } from "@tabler/icons-react";
 
 function App() {
   const [apiKey, setApiKey] = useState(null);
@@ -49,14 +55,33 @@ function App() {
           <>
             <Summarizer />
             <Divider mt={20} mb={20} />
-            <Button
-              leftSection={<IconSettings size={14} />}
-              variant="default"
-              href="#"
-              onClick={() => setDisplayAPIKeyForm(true)}
-            >
-              Settings
-            </Button>
+            <Group>
+              <Button
+                leftSection={<IconSettings size={14} />}
+                variant="default"
+                onClick={() => setDisplayAPIKeyForm(true)}
+              >
+                Settings
+              </Button>
+              <Button
+                variant="default"
+                component="a"
+                leftSection={<IconBubble size={14} />}
+                href="https://github.com/coryshaw/summarize-webpage-chrome-plugin/issues"
+                target="_blank"
+              >
+                Feedback
+              </Button>
+              <Button
+                variant="default"
+                component="a"
+                leftSection={<IconStarFilled size={14} />}
+                href="https://chromewebstore.google.com/detail/gpt-summarizer/ofcjacnckhgbmeompdemfppfmfogahgf"
+                target="_blank"
+              >
+                Rate This Extension
+              </Button>
+            </Group>
           </>
         )}
 
