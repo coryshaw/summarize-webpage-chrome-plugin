@@ -2,12 +2,13 @@ import { Loader, Alert, Flex, ActionIcon } from "@mantine/core";
 import React, { useState, useEffect } from "react";
 import { extractPageText } from "../utils/extractContent";
 import { fetchSummary } from "../utils/fetchSummary";
-import { IconRefresh } from "@tabler/icons-react";
+import { IconCheck, IconClipboard, IconRefresh } from "@tabler/icons-react";
 import markedAlert from "marked-alert";
 
 function Summarizer() {
   const [loading, setLoading] = useState(true);
   const [summary, setSummary] = useState(null);
+  const [isCopied, setIsCopied] = useState(false);
   const [error, setError] = useState("Error!");
 
   const summarizeContent = async () => {
@@ -36,6 +37,17 @@ function Summarizer() {
     summarizeContent();
   }, []);
 
+  const copyToClipboard = async () => {
+    setIsCopied(true);
+    if (summary) {
+      const text = summary.replace(/<\/?[^>]+(>|$)/g, ""); // Strip HTML tags
+      await navigator.clipboard.writeText(text);
+    }
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  };
+
   return (
     <div>
       {loading && (
@@ -53,6 +65,22 @@ function Summarizer() {
             aria-label="Settings"
           >
             <IconRefresh style={{ width: "70%", height: "70%" }} stroke={1.5} />
+          </ActionIcon>
+          <ActionIcon
+            style={{ position: "absolute", top: "60px", right: "20px" }}
+            onClick={copyToClipboard}
+            variant="default"
+            aria-label="Copy to clipboard"
+            title="Copy to clipboard"
+          >
+            {isCopied ? (
+              <IconCheck style={{ width: "70%", height: "70%" }} stroke={1.5} />
+            ) : (
+              <IconClipboard
+                style={{ width: "70%", height: "70%" }}
+                stroke={1.5}
+              />
+            )}
           </ActionIcon>
           <div dangerouslySetInnerHTML={{ __html: summary }} />
         </>
