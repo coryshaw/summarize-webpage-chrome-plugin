@@ -95,6 +95,10 @@ function App() {
               }
             }}
             currentKey={apiKey}
+            onClearCurrentKey={() => {
+              setApiKey(null);
+              chrome.storage.local.remove("apiKey");
+            }}
           />
         )}
       </Container>

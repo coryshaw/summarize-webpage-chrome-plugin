@@ -1,8 +1,9 @@
 import { Anchor, Box, Button, Group, Text, TextInput } from "@mantine/core";
 import React from "react";
 import { useForm } from "@mantine/form";
+import { IconX } from "@tabler/icons-react";
 
-const APIKeyForm = ({ currentKey, onDone }) => {
+const APIKeyForm = ({ currentKey, onDone, onClearCurrentKey }) => {
   const form = useForm({
     mode: "controlled",
     initialValues: { apiKey: currentKey },
@@ -39,6 +40,20 @@ const APIKeyForm = ({ currentKey, onDone }) => {
           required
           key={form.key("apiKey")}
           {...form.getInputProps("apiKey")}
+          rightSection={
+            currentKey && (
+              <IconX
+                size={14}
+                variant="transparent"
+                onClick={() => {
+                  onClearCurrentKey();
+                  form.setFieldValue("apiKey", "");
+                }}
+                rightSectionWidth={50}
+                style={{ cursor: "pointer" }}
+              />
+            )
+          }
         />
         <Group justify="flex-end" mt="md">
           <Button type="submit">Submit</Button>
