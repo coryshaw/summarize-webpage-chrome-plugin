@@ -1,6 +1,6 @@
 # GPT Summarizer Chrome Extension
 
-![Demo Screenshot](./images/demo_screenshot.png)
+![Demo Screenshot](./public/images/demo_screenshot.png)
 _Demo of the extension summarizing this README_
 
 GPT Summarizer is a Chrome extension that utilizes OpenAI's powerful GPT models to summarize text content from any webpage. Additionally, it highlights inaccurate information and one-sided perspectives. **You must provide your own OpenAI API key to use this extension.**
